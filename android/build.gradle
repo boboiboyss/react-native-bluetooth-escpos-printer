@@ -1,4 +1,13 @@
+// Top-level build file for the library module.
+
 buildscript {
+    ext {
+        buildToolsVersion = "30.0.3"  // Disesuaikan dengan aplikasi
+        minSdkVersion = 21              // Disesuaikan dengan aplikasi
+        compileSdkVersion = 33          // Disesuaikan dengan aplikasi
+        targetSdkVersion = 33           // Disesuaikan dengan aplikasi
+    }
+
     repositories {
         maven { url "https://repo.spring.io/plugins-release/" }
         mavenCentral()
@@ -10,19 +19,19 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:4.1.1'  // Disesuaikan dengan versi gradle yang lebih baru
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion compileSdkVersion  // Menggunakan variabel dari buildscript
+    buildToolsVersion buildToolsVersion    // Menggunakan variabel dari buildscript
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 24
+        minSdkVersion minSdkVersion        // Menggunakan variabel dari buildscript
+        targetSdkVersion targetSdkVersion  // Menggunakan variabel dari buildscript
         versionCode 1
         versionName "1.0"
     }
@@ -49,6 +58,6 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.facebook.react:react-native:+'  // From node_modules
-    implementation group: 'com.android.support', name: 'support-v4', version: '27.0.0'
+    implementation group: 'com.android.support', name: 'support-v4', version: '27.0.0' // Jika masih menggunakan support library
     implementation "com.google.zxing:core:3.3.0"
 }
